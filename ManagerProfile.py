@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from AdminLogin import Login
 import pytest
+import unittest
 
 
 class AddManager(Login):
@@ -20,7 +21,7 @@ class AddManager(Login):
         self.driver.find_element(By.XPATH, "//select[@name='roles']").click()
         time.sleep(3)
         self.driver.find_element(By.XPATH, "//option[@value='mod']").click()
-        # self.driver.find_element(By.XPATH, "//li[text()='java']").click()
+        # self.driver.find_element(By.XPATH, "//li[text()='java']").check()
         time.sleep(5)
         # self.driver.find_elements(By.XPATH, "//select[@name='designation']").click()
         # time.sleep(5)

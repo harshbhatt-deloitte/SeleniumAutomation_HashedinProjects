@@ -3,7 +3,7 @@ from telnetlib import EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from AdminLogin import Login
-import pytest
+import unittest
 
 
 class AddEmployee(Login):
@@ -13,6 +13,7 @@ class AddEmployee(Login):
     def employee(self):
         time.sleep(5)
         self.driver.find_element(By.XPATH, "//a[@href='/admin/add-profile']").click()
+        self.driver.find_element(By.XPATH, "//a[@href='/admin/add-profile']").is_displayed()
         time.sleep(5)
         self.driver.find_element(By.XPATH, "//input[@name='name']").send_keys("Mark")
         self.driver.find_element(By.XPATH, "//input[@name='username']").send_keys("mark101")
@@ -20,9 +21,9 @@ class AddEmployee(Login):
         self.driver.find_element(By.XPATH, "//select[@name='roles']").click()
         time.sleep(5)
         self.driver.find_element(By.XPATH, "//option[@value='user']").click()
-        # self.driver.find_element(By.XPATH, "//input[@name='skills_input']").send_keys("java")
+        self.driver.find_element(By.XPATH, "//input[@name='skills_input']").send_keys("java")
         time.sleep(5)
-        # self.driver.find_elements(By.XPATH, "//select[@name='designation']").click()
+        self.driver.find_elements(By.XPATH, "//select[@name='designation']").click()
         time.sleep(2)
         self.driver.find_element(By.XPATH, "//option[text()='Backend']").click()
         self.driver.find_element(By.XPATH, "//select[@name='band']").click()
