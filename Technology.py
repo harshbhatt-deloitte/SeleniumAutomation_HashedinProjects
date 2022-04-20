@@ -20,6 +20,34 @@ class AddTech(unittest.TestCase):
 
     def test_tech(self):
         time.sleep(5)
-        assert self.driver.find_element(By.XPATH, "//a[@href='/admin/add-new-skill']").click()
-        #self.driver.find_element(By.XPATH, "//a[@href='/admin/add-new-skill']").click()
+        assert self.driver.find_element(By.XPATH, "//a[@href='/admin/add-new-skill']").is_displayed()
+        assert self.driver.find_element(By.XPATH, "//a[@href='/admin/add-new-skill']").is_enabled()
+        self.driver.find_element(By.XPATH, "//a[@href='/admin/add-new-skill']").click()
+        time.sleep(5)
+
+        assert self.driver.find_element(By.XPATH, "//input[@name='technology']").is_displayed()
+        self.driver.find_element(By.XPATH, "//input[@name='technology']").send_keys("Python")
+        self.driver.find_element(By.XPATH, "//button[text()='Add Skill']").click()
+        time.sleep(3)
+
+        assert self.driver.find_element(By.XPATH, "//div[text()='Technology Added']").is_displayed()
+        self.driver.find_element(By.XPATH, "//button[text()='OK']").click()
+        time.sleep(10)
+
+    # Negative test case for adding the same technology again
+    def test_Re_tech(self):
+        time.sleep(5)
+        assert self.driver.find_element(By.XPATH, "//a[@href='/admin/add-new-skill']").is_displayed()
+        assert self.driver.find_element(By.XPATH, "//a[@href='/admin/add-new-skill']").is_enabled()
+        self.driver.find_element(By.XPATH, "//a[@href='/admin/add-new-skill']").click()
+        time.sleep(5)
+
+        assert self.driver.find_element(By.XPATH, "//input[@name='technology']").is_displayed()
+        self.driver.find_element(By.XPATH, "//input[@name='technology']").send_keys("Python")
+        self.driver.find_element(By.XPATH, "//button[text()='Add Skill']").click()
+        time.sleep(3)
+
+        assert self.driver.find_element(By.XPATH, "//div[@class='swal-text']").is_displayed()
+        self.driver.find_element(By.XPATH, "//button[text()='OK']").click()
+        time.sleep(10)
 
