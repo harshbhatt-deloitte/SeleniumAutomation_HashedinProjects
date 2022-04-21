@@ -25,8 +25,9 @@ class AddEmployee(unittest.TestCase):
         # a.move_to_element(m).perform()
 
         assert self.driver.find_element(By.XPATH, "//a[@href='/admin/add-profile']").is_enabled()
+        assert self.driver.find_element(By.XPATH, "//a[@href='/admin/add-profile']").is_displayed()
         self.driver.find_element(By.XPATH, "//a[@href='/admin/add-profile']").click()
-        time.sleep(10)
+        self.driver.implicitly_wait(5)
 
         assert self.driver.find_element(By.XPATH, "//input[@name='name']").is_displayed()
         self.driver.find_element(By.XPATH, "//input[@name='name']").send_keys("Mark")
@@ -39,14 +40,14 @@ class AddEmployee(unittest.TestCase):
 
         assert self.driver.find_element(By.XPATH, "//select[@name='roles']").is_displayed()
         self.driver.find_element(By.XPATH, "//select[@name='roles']").click()
-        self.driver.implicitly_wait(5)
+        self.driver.implicitly_wait(3)
         self.driver.find_element(By.XPATH, "//option[@value='user']").click()
-        time.sleep(3)
+        self.driver.implicitly_wait(3)
 
         assert self.driver.find_element(By.XPATH, "//input[@name='skills_input']").is_displayed()
-        skills = self.driver.find_element(By.XPATH, "//ul[@class='optionContainer']")
-        self.driver.execute_script("arguments[0].click();", skills)
-        time.sleep(5)
+        self.driver.find_element(By.XPATH, "//input[@name='skills_input']").click()
+        self.driver.find_element(By.XPATH, "//li[text()='java']").click()
+        self.driver.implicitly_wait(3)
 
         # assert self.driver.find_elements(By.XPATH, "//option[text()='Select Specialization']")
         self.driver.find_element(By.XPATH, "//option[text()='Backend']").click()

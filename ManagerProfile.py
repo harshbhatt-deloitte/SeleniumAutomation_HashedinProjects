@@ -29,10 +29,10 @@ class AddManager(unittest.TestCase):
         self.driver.implicitly_wait(7)
 
         assert self.driver.find_element(By.XPATH, "//input[@name='name']").is_displayed()
-        self.driver.find_element(By.XPATH, "//input[@name='name']").send_keys("Mark")
+        self.driver.find_element(By.XPATH, "//input[@name='name']").send_keys("John")
 
         assert self.driver.find_element(By.XPATH, "//input[@name='username']").is_displayed()
-        self.driver.find_element(By.XPATH, "//input[@name='username']").send_keys("mark101")
+        self.driver.find_element(By.XPATH, "//input[@name='username']").send_keys("john00")
 
         assert self.driver.find_element(By.XPATH, "//input[@name='password']").is_displayed()
         self.driver.find_element(By.XPATH, "//input[@name='password']").send_keys("qwerty")
@@ -41,15 +41,15 @@ class AddManager(unittest.TestCase):
         self.driver.find_element(By.XPATH, "//select[@name='roles']").click()
         self.driver.implicitly_wait(5)
         self.driver.find_element(By.XPATH, "//option[@value='mod']").click()
-        time.sleep(5)
+        self.driver.implicitly_wait(3)
 
         assert self.driver.find_element(By.XPATH, "//input[@name='skills_input']").is_displayed()
-        skills = self.driver.find_element(By.XPATH, "//ul[@class='optionContainer']")
-        self.driver.execute_script("arguments[0].click();", skills)
-        time.sleep(5)
+        self.driver.find_element(By.XPATH, "//input[@name='skills_input']").click()
+        self.driver.find_element(By.XPATH, "//li[text()='React JS']").click()
+        self.driver.implicitly_wait(3)
 
         # assert self.driver.find_elements(By.XPATH, "//option[text()='Select Specialization']")
-        self.driver.find_element(By.XPATH, "//option[text()='Backend']").click()
+        self.driver.find_element(By.XPATH, "//option[text()='Frontend developer']").click()
 
         assert self.driver.find_element(By.XPATH, "//select[@name='band']").is_displayed()
         self.driver.find_element(By.XPATH, "//select[@name='band']").click()
@@ -57,13 +57,13 @@ class AddManager(unittest.TestCase):
         self.driver.find_element(By.XPATH, "//option[text()='B7H']").click()
 
         assert self.driver.find_element(By.XPATH, "//input[@name='email']").is_displayed()
-        self.driver.find_element(By.XPATH, "//input[@name='email']").send_keys("mark@hashedin")
+        self.driver.find_element(By.XPATH, "//input[@name='email']").send_keys("john@hashedin")
 
         assert self.driver.find_element(By.XPATH, "//input[@name='phoneNumber']").is_displayed()
-        self.driver.find_element(By.XPATH, "//input[@name='phoneNumber']").send_keys("12345667890")
+        self.driver.find_element(By.XPATH, "//input[@name='phoneNumber']").send_keys("9233245515")
 
         assert self.driver.find_element(By.XPATH, "//input[@name='address']").is_displayed()
-        self.driver.find_element(By.XPATH, "//input[@name='address']").send_keys("Mumbai")
+        self.driver.find_element(By.XPATH, "//input[@name='address']").send_keys("Bangalore")
 
         assert self.driver.find_element(By.XPATH, "//button[text()='Add Profile']").is_displayed()
         assert self.driver.find_element(By.XPATH, "//button[text()='Add Profile']").is_enabled()
