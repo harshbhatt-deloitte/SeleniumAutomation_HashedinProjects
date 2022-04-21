@@ -19,29 +19,54 @@ class AddManager(unittest.TestCase):
         self.driver.find_element(By.XPATH, "//input[@id='login']").click()
 
     def test_addProfile(self):
-        time.sleep(5)
-        assert self.driver.find_element(By.XPATH, "//a[@href='/admin/add-profile']").is_enabled()
+        self.driver.implicitly_wait(5)
         # a = ActionChains(self.driver)
         # m = self.driver.find_element(By.XPATH, "//a[@href='/admin/add-profile']").click()
         # a.move_to_element(m).perform()
-        self.driver.find_element(By.XPATH, "//a[@href='/admin/add-profile']").click()
-        time.sleep(10)
-        assert self.driver.find_element(By.XPATH, "//input[@name='name']").is_displayed()
-        self.driver.find_element(By.XPATH, "//input[@name='name']").send_keys("MarkZ")
 
-        self.driver.find_element(By.XPATH, "//input[@name='username']").send_keys("mark10")
+        assert self.driver.find_element(By.XPATH, "//a[@href='/admin/add-profile']").is_enabled()
+        self.driver.find_element(By.XPATH, "//a[@href='/admin/add-profile']").click()
+        self.driver.implicitly_wait(7)
+
+        assert self.driver.find_element(By.XPATH, "//input[@name='name']").is_displayed()
+        self.driver.find_element(By.XPATH, "//input[@name='name']").send_keys("Mark")
+
+        assert self.driver.find_element(By.XPATH, "//input[@name='username']").is_displayed()
+        self.driver.find_element(By.XPATH, "//input[@name='username']").send_keys("mark101")
+
+        assert self.driver.find_element(By.XPATH, "//input[@name='password']").is_displayed()
         self.driver.find_element(By.XPATH, "//input[@name='password']").send_keys("qwerty")
+
+        assert self.driver.find_element(By.XPATH, "//select[@name='roles']").is_displayed()
         self.driver.find_element(By.XPATH, "//select[@name='roles']").click()
-        time.sleep(5)
+        self.driver.implicitly_wait(5)
         self.driver.find_element(By.XPATH, "//option[@value='mod']").click()
-        # self.driver.find_element(By.XPATH, "//input[@name='skills_input']").send_keys("java")
         time.sleep(5)
-        # self.driver.find_elements(By.XPATH, "//select[@name='designation']").click()
+
+        assert self.driver.find_element(By.XPATH, "//input[@name='skills_input']").is_displayed()
+        skills = self.driver.find_element(By.XPATH, "//ul[@class='optionContainer']")
+        self.driver.execute_script("arguments[0].click();", skills)
+        time.sleep(5)
+
+        # assert self.driver.find_elements(By.XPATH, "//option[text()='Select Specialization']")
         self.driver.find_element(By.XPATH, "//option[text()='Backend']").click()
+
+        assert self.driver.find_element(By.XPATH, "//select[@name='band']").is_displayed()
         self.driver.find_element(By.XPATH, "//select[@name='band']").click()
-        time.sleep(2)
-        self.driver.find_element(By.XPATH, "//option[text()='B8L']").click()
+        self.driver.implicitly_wait(3)
+        self.driver.find_element(By.XPATH, "//option[text()='B7H']").click()
+
+        assert self.driver.find_element(By.XPATH, "//input[@name='email']").is_displayed()
         self.driver.find_element(By.XPATH, "//input[@name='email']").send_keys("mark@hashedin")
-        self.driver.find_element(By.XPATH, "//input[@name='phoneNumber']").send_keys("1234566789")
+
+        assert self.driver.find_element(By.XPATH, "//input[@name='phoneNumber']").is_displayed()
+        self.driver.find_element(By.XPATH, "//input[@name='phoneNumber']").send_keys("12345667890")
+
+        assert self.driver.find_element(By.XPATH, "//input[@name='address']").is_displayed()
         self.driver.find_element(By.XPATH, "//input[@name='address']").send_keys("Mumbai")
+
+        assert self.driver.find_element(By.XPATH, "//button[text()='Add Profile']").is_displayed()
+        assert self.driver.find_element(By.XPATH, "//button[text()='Add Profile']").is_enabled()
+        # self.driver.find_element(By.XPATH, "//button[text()='Add Profile']").click()
+        time.sleep(5)
 
