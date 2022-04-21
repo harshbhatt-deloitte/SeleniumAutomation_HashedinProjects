@@ -47,9 +47,6 @@ class AddEmployee(unittest.TestCase):
         assert self.driver.find_element(By.XPATH, "//input[@name='skills_input']").is_displayed()
 
         self.driver.find_element(By.XPATH, "//input[@name='skills_input']").click()
-
-        # self.driver.find_element(By.XPATH, "//li[text()='Java13']").click()
-        # self.driver.find_element(By.XPATH, "//li[text()='NodeJS']").click()
         skills = self.driver.find_elements(By.XPATH, "//ul[@class='optionContainer']/li")
         for i in skills:
             if i.text == "Java13":

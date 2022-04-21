@@ -71,7 +71,9 @@ class AddManager(unittest.TestCase):
         self.driver.find_element(By.XPATH, "//button[text()='Add Profile']").click()
         assert self.driver.find_element(By.XPATH, "// div[text() = 'Added successfully']").is_displayed()
         assert self.driver.find_element(By.XPATH, "// button[text() = 'OK']").click()
+
         time.sleep(5)
+
 
 
 

@@ -20,7 +20,7 @@ class Login(unittest.TestCase):
         self.driver.implicitly_wait(5)
         assert self.driver.find_element(By.XPATH, "//a[@href='/admin/managers']").is_displayed()
         assert self.driver.find_element(By.XPATH, "//a[@href='/admin/managers']").is_enabled()
-        self.driver.find_element(By.XPATH, "//a[@href='/admin/managers']").click()
+        self.driver.find_element(By.XPATH, "//a[@href='/admin/managers']").click
         self.driver.implicitly_wait(5)
 
         found = False

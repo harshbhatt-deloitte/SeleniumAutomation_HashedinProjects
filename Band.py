@@ -19,38 +19,38 @@ class AddBand(unittest.TestCase):
         self.driver.find_element(By.XPATH, "//input[@id='login']").click()
 
     def test_band(self):
-        time.sleep(5)
+        self.driver.implicitly_wait(5)
         assert self.driver.find_element(By.XPATH, "//a[@href='/admin/add-new-band']").is_displayed()
         assert self.driver.find_element(By.XPATH, "//a[@href='/admin/add-new-band']").is_enabled()
         self.driver.find_element(By.XPATH, "//a[@href='/admin/add-new-band']").click()
 
-        time.sleep(5)
+        self.driver.implicitly_wait(5)
         assert self.driver.find_element(By.XPATH, "// input[ @ name = 'band']").is_displayed()
 
         self.driver.find_element(By.XPATH, "// input[ @ name = 'band']").send_keys("B6L")
         assert self.driver.find_element(By.XPATH, "//button[text()='Add Band']").is_enabled()
 
         self.driver.find_element(By.XPATH, "//button[text()='Add Band']").click()
-        time.sleep(3)
+        self.driver.implicitly_wait(5)
         assert self.driver.find_element(By.XPATH, "//div[text()='Band Added']").is_displayed()
         self.driver.find_element(By.XPATH, "//button[text()='OK']").click()
-        time.sleep(10)
+        time.sleep(5)
 
     # Negative test case for adding the same band again
     def test_Re_band(self):
-        time.sleep(5)
+        self.driver.implicitly_wait(5)
         assert self.driver.find_element(By.XPATH, "//a[@href='/admin/add-new-band']").is_displayed()
         assert self.driver.find_element(By.XPATH, "//a[@href='/admin/add-new-band']").is_enabled()
         self.driver.find_element(By.XPATH, "//a[@href='/admin/add-new-band']").click()
 
-        time.sleep(5)
+        self.driver.implicitly_wait(5)
         assert self.driver.find_element(By.XPATH, "// input[ @ name = 'band']").is_displayed()
 
         self.driver.find_element(By.XPATH, "// input[ @ name = 'band']").send_keys("B99")
         assert self.driver.find_element(By.XPATH, "//button[text()='Add Band']").is_enabled()
 
         self.driver.find_element(By.XPATH, "//button[text()='Add Band']").click()
-        time.sleep(3)
+        self.driver.implicitly_wait(5)
         assert self.driver.find_element(By.XPATH, "//div[@class='swal-text']").is_displayed()
         self.driver.find_element(By.XPATH, "//button[text()='OK']").click()
         time.sleep(10)
@@ -62,7 +62,7 @@ class AddBand(unittest.TestCase):
         # assert self.driver.find_element(By.XPATH, "//a[@href='/admin/add-new-band']").is_displayed()
         # assert self.driver.find_element(By.XPATH, "//a[@href='/admin/add-new-band']").is_enabled()
         self.driver.find_element(By.XPATH, "//a[@href='/admin/add-new-band']").click()
-        time.sleep(5)
+        self.driver.implicitly_wait(5)
 
         lstEle = self.driver.find_elements(By.XPATH, "//tbody/tr/td[2]")
         lstDel = self.driver.find_elements(By.XPATH, "//tbody/tr/td[3]/span")

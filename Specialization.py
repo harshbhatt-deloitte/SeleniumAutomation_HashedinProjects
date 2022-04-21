@@ -19,16 +19,16 @@ class AddSpec(unittest.TestCase):
         self.driver.find_element(By.XPATH, "//input[@id='login']").click()
 
     def test_AddSpec(self):
-        time.sleep(5)
+        self.driver.implicitly_wait(5)
         assert self.driver.find_element(By.XPATH, "//a[@href='/admin/add-new-designation']").is_displayed()
         assert self.driver.find_element(By.XPATH, "//a[@href='/admin/add-new-designation']").is_enabled()
         self.driver.find_element(By.XPATH, "//a[@href='/admin/add-new-designation']").click()
-        time.sleep(5)
+        self.driver.implicitly_wait(5)
 
         assert self.driver.find_element(By.XPATH, "// input[ @ name = 'designation']").is_displayed()
         self.driver.find_element(By.XPATH, "// input[ @ name = 'designation']").send_keys("QA")
         self.driver.find_element(By.XPATH, "//button[text() = 'Add Specialization']").click()
-        time.sleep(3)
+        self.driver.implicitly_wait(5)
 
         assert self.driver.find_element(By.XPATH, "//div[text()='Specialization Added Succesfully']").is_displayed()
         self.driver.find_element(By.XPATH, "//button[text() = 'OK']").click()
@@ -36,16 +36,16 @@ class AddSpec(unittest.TestCase):
 
     # Negative Test case for adding the same specialization again
     def test_Re_Spec(self):
-        time.sleep(5)
+        self.driver.implicitly_wait(5)
         assert self.driver.find_element(By.XPATH, "//a[@href='/admin/add-new-designation']").is_displayed()
         assert self.driver.find_element(By.XPATH, "//a[@href='/admin/add-new-designation']").is_enabled()
         self.driver.find_element(By.XPATH, "//a[@href='/admin/add-new-designation']").click()
-        time.sleep(5)
+        self.driver.implicitly_wait(5)
 
         assert self.driver.find_element(By.XPATH, "// input[ @ name = 'designation']").is_displayed()
         self.driver.find_element(By.XPATH, "// input[ @ name = 'designation']").send_keys("QA")
         self.driver.find_element(By.XPATH, "//button[text() = 'Add Specialization']").click()
-        time.sleep(3)
+        self.driver.implicitly_wait(5)
 
         assert self.driver.find_element(By.XPATH, "//div[@class='swal-text']").is_displayed()
         self.driver.find_element(By.XPATH, "//button[text() = 'OK']").click()

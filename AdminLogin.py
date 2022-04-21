@@ -28,6 +28,5 @@ class Login(unittest.TestCase):
     def test_button(self):
         assert self.driver.find_element(By.XPATH, "//input[@id='login']").is_enabled()
 
-
 if __name__ == "__main__":
     unittest.main()
