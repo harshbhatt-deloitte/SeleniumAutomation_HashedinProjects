@@ -45,8 +45,16 @@ class AddEmployee(unittest.TestCase):
         self.driver.implicitly_wait(3)
 
         assert self.driver.find_element(By.XPATH, "//input[@name='skills_input']").is_displayed()
+
         self.driver.find_element(By.XPATH, "//input[@name='skills_input']").click()
-        self.driver.find_element(By.XPATH, "//li[text()='java']").click()
+
+        # self.driver.find_element(By.XPATH, "//li[text()='Java13']").click()
+        # self.driver.find_element(By.XPATH, "//li[text()='NodeJS']").click()
+        skills = self.driver.find_elements(By.XPATH, "//ul[@class='optionContainer']/li")
+        for i in skills:
+            if i.text == "Java13":
+                i.click()
+
         self.driver.implicitly_wait(3)
 
         # assert self.driver.find_elements(By.XPATH, "//option[text()='Select Specialization']")
@@ -68,5 +76,7 @@ class AddEmployee(unittest.TestCase):
 
         assert self.driver.find_element(By.XPATH, "//button[text()='Add Profile']").is_displayed()
         assert self.driver.find_element(By.XPATH, "//button[text()='Add Profile']").is_enabled()
-        # self.driver.find_element(By.XPATH, "//button[text()='Add Profile']").click()
+        self.driver.find_element(By.XPATH, "//button[text()='Add Profile']").click()
+        assert self.driver.find_element(By.XPATH, "// div[text() = 'Added successfully']").is_displayed()
+        assert self.driver.find_element(By.XPATH, "// button[text() = 'OK']").click()
         time.sleep(5)

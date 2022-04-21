@@ -46,6 +46,7 @@ class AddManager(unittest.TestCase):
         assert self.driver.find_element(By.XPATH, "//input[@name='skills_input']").is_displayed()
         self.driver.find_element(By.XPATH, "//input[@name='skills_input']").click()
         self.driver.find_element(By.XPATH, "//li[text()='React JS']").click()
+        self.driver.find_element(By.XPATH, "//li[text()='java']").click()
         self.driver.implicitly_wait(3)
 
         # assert self.driver.find_elements(By.XPATH, "//option[text()='Select Specialization']")
@@ -67,6 +68,11 @@ class AddManager(unittest.TestCase):
 
         assert self.driver.find_element(By.XPATH, "//button[text()='Add Profile']").is_displayed()
         assert self.driver.find_element(By.XPATH, "//button[text()='Add Profile']").is_enabled()
-        # self.driver.find_element(By.XPATH, "//button[text()='Add Profile']").click()
+        self.driver.find_element(By.XPATH, "//button[text()='Add Profile']").click()
+        assert self.driver.find_element(By.XPATH, "// div[text() = 'Added successfully']").is_displayed()
+        assert self.driver.find_element(By.XPATH, "// button[text() = 'OK']").click()
         time.sleep(5)
+
+
+
 
