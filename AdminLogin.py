@@ -4,6 +4,7 @@ import unittest
 
 
 class Login(unittest.TestCase):
+
     def setUp(self):
         self.url = "https://hashedin-frontend-urtjok3rza-wl.a.run.app/"
         self.id = "admin"

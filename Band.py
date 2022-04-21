@@ -55,7 +55,22 @@ class AddBand(unittest.TestCase):
         self.driver.find_element(By.XPATH, "//button[text()='OK']").click()
         time.sleep(10)
 
-    # def test_DeleteBand(self):
-    #     assert self.driver.find_element(By.XPATH, "").is_displayed()
+    def test_DeleteBand(self):
+        # assert self.driver.find_element(By.XPATH, "").is_displayed()
         # //*[@id="root"]/div/div/div[2]/div[2]/div/div/table/tbody/tr[4]/td[3]/span
+        time.sleep(5)
+        # assert self.driver.find_element(By.XPATH, "//a[@href='/admin/add-new-band']").is_displayed()
+        # assert self.driver.find_element(By.XPATH, "//a[@href='/admin/add-new-band']").is_enabled()
+        self.driver.find_element(By.XPATH, "//a[@href='/admin/add-new-band']").click()
+        time.sleep(5)
+
+        lstEle = self.driver.find_elements(By.XPATH, "//tbody/tr/td[2]")
+        lstDel = self.driver.find_elements(By.XPATH, "//tbody/tr/td[3]/span")
+
+        found = 0
+        for i in range(0, len(lstEle)):
+            if lstEle[i].text == "B10":
+                lstDel[i].click()
+
+        time.sleep(5)
 
